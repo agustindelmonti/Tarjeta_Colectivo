@@ -8,8 +8,8 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 	public function setup(){
 		$this->tarjeta = new Tarjeta();
 		$this->A = new Colectivo("K","SEMTUR");
-		$this->B = new Colectivo("145","Rosario Bus");
-	};
+		$this->B = new Colectivo("145","Rosario Bus");}
+	
 	public function recargarTest1(){
 		$this->tarjeta->recargar(600);
 		$this->assertEquals($this->tarjeta->saldo(), 740, "Cuando cargo 600 deberia tener finalmente 740");
