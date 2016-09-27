@@ -8,8 +8,7 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
-         bootstrap="test/bootstrap.php">
+         syntaxCheck="false">
     <testsuites>
         <testsuite name="Tarjeta_Colectivo Type Test Suite">
             <directory>./tests/</directory>
