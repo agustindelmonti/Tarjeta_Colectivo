@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Tarjeta_Colectivo;
+namespace Tarjeta_Colectivo;
 
 class Colectivo extends Transporte{
 	protected $empresa;
