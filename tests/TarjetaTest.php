@@ -12,15 +12,15 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 
 	}
 	public function recargarTest1(){
-		$this->tarjeta->recargar(600)
+		$this->tarjeta->recargar(600);
 		$this->assertEquals($this->tarjeta->saldo(), 740, "Cuando cargo 600 deberia tener finalmente 740");
 	}
 	public function recargarTest2(){
-		$this->tarjeta->recargar(350)
+		$this->tarjeta->recargar(350);
 		$this->assertEquals($this->tarjeta->saldo(), 398, "Cuando cargo 350 deberia tener finalmente 398");
 	}
 	public function recargarTest3(){
-		$this->tarjeta->recargar(250)
+		$this->tarjeta->recargar(250);
 		$this->assertEquals($this->tarjeta->saldo(), 250, "Cuando cargo 250 deberia tener finalmente 250");
 	}
 
