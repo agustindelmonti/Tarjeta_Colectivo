@@ -11,8 +11,8 @@
          syntaxCheck="false"
          bootstrap="test/bootstrap.php">
     <testsuites>
-        <testsuite name="Tarjeta Type Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="Tarjeta_Colectivo Type Test Suite">
+            <directory>./test/</directory>
         </testsuite>
     </testsuites>
 
