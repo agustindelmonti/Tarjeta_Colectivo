@@ -5,7 +5,7 @@
      }, 
      "autoload": { 
          "psr-4": { 
-             "Tarjeta_Colectivo\\": "src" 
+             "poli\\Tarjeta_Colectivo\\": "src/" 
          } 
      } 
  } 
