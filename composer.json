@@ -1,11 +1,11 @@
  { 
-     "name": "poli/testing", 
+     "name": "Poli/Tarjeta_Colectivo", 
      "require": { 
          "phpunit/phpunit": "^5.5" 
      }, 
      "autoload": { 
          "psr-4": { 
-             "Tarjeta_Colectivo\\": "src" 
+             "Poli\\Tarjeta_Colectivo\\": "src" 
          } 
      } 
  } 

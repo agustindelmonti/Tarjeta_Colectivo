@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Tarjeta;
+namespace Poli\Tarjeta_Colectivo;
 
 
 class Tarjeta implements Int_Tarjeta{

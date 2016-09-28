@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Tarjeta;
+namespace Poli\Tarjeta_Colectivo;
 
 abstract class Transporte {
 	protected $id,$costo,$tipo,$costotrans;
