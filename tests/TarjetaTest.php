@@ -74,7 +74,7 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->tarjeta->saldo(),18, "El saldo de la tarjeta deberia ser de $18");
 		//OTRO VIAJE
 		$this->tarjeta->pagar($this->C,"2016/02/3 12:00");
-		$this->assertEquals($this->tarjeta->saldo(),9, "El saldo de la tarjeta deberia ser de $9");
+		$this->assertEquals($this->tarjeta->saldo(),6, "El saldo de la tarjeta deberia ser de $6");
 	}
 }
 ?>
