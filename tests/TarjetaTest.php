@@ -36,7 +36,7 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		//DOS VIAJES, MISMO COLECTIVO (MEDIO)
 		$this->medio->pagar($this->A,"2016/02/1 12:00");
 		$this->medio->pagar($this->A,"2016/02/1 12:02");
-		$this->assertEquals($this->tarjeta->saldo(),12, "El saldo de la tarjeta deberia ser de $12");
+		$this->assertEquals($this->medio->saldo(),12, "El saldo de la tarjeta deberia ser de $12");
 	}
 
 	public function testPagarColectivo2(){
@@ -49,11 +49,12 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		//DOS VIAJES, COLECTIVOS A y B, NO TRANSBORDO (MEDIO)
 		$this->medio->pagar($this->A,"2016/02/1 12:00");
 		$this->medio->pagar($this->B,"2016/03/1 12:02");
-		$this->assertEquals($this->tarjeta->saldo(),12, "El saldo de la tarjeta deberia ser de $12");
+		$this->assertEquals($this->medio->saldo(),12, "El saldo de la tarjeta deberia ser de $12");
 	}
 
 	public function testPagarTransbordo(){
 		$this->tarjeta->recargar(20);
+		$this->medio->recargar(20);
 		//TRANSBORDO ENTRE A y B (NORMAL)
 		$this->tarjeta->pagar($this->A,"2016/02/1 12:00");
 		$this->tarjeta->pagar($this->B,"2016/02/1 12:02");
@@ -61,7 +62,7 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		//TRANSBORDO ENTRE A y B (MEDIO)
 		$this->medio->pagar($this->A,"2016/02/1 12:00");
 		$this->medio->pagar($this->B,"2016/02/1 12:02");
-		$this->assertEquals($this->tarjeta->saldo(),14.68, "El saldo de la tarjeta deberia ser de $14.68");
+		$this->assertEquals($this->medio->saldo(),14.68, "El saldo de la tarjeta deberia ser de $14.68");
 	}
 }
 ?>
