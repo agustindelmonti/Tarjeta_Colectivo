@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Tarjeta;
+namespace Poli\Tarjeta_Colectivo;
 
 class Bicicleta extends Transporte{
 	public function __construct($id){
