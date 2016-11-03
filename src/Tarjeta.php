@@ -76,6 +76,7 @@ class Tarjeta implements Int_Tarjeta{
 				}
 			$this->viajes[$fecha_y_hora] = new Viaje($fecha_y_hora,$transporte,$costo);
 			return 1;
+			}
 		}
 	}
 
