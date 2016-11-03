@@ -2,7 +2,7 @@
 
 	namespace Poli\Tarjeta_Colectivo;
 
-	class TarjetaTest extends \PHPUnit_Framework_TestCase {
+	class biciTest extends \PHPUnit_Framework_TestCase {
 
 		public function setup(){
 			$this->tarjeta = new Tarjeta();
