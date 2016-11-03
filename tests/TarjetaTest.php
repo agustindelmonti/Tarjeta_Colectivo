@@ -52,6 +52,25 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->medio->saldo(),12, "El saldo de la tarjeta deberia ser de $12");
 	}
 
+	public function testPagarPlus(){
+		$this->tarjeta->pagar($this->A,"2016/02/1 12:00");
+		$this->tarjeta->pagar($this->A,"2016/03/1 12:00");
+		$this->assertEquals($this->tarjeta->saldo(),0,"El saldo deberia ser $0");
+		$this->assertEquals($this->tarjeta->pagar(),1,"Deberia poder pagar");
+		//NO TENGO MAS PLUS
+		$this->tarjeta->pagar($this->A,"2016/04/1 12:00");
+		$this->assertEquals($this->tarjeta->pagar(),0,"No deberia poder pagar");
+	}
+
+	public function testCargarPlus(){
+		$this->tarjeta->pagar($this->A,"2016/02/1 12:00");
+		$this->tarjeta->pagar($this->A,"2016/03/1 12:00");
+		$this->tarjeta->recargar(30);
+		$this->tarjeta->pagar($this->A,"2016/03/1 12:00");
+		$this->assertEquals($this->tarjeta->saldo(),6, "El saldo deberia ser $6");
+
+	}
+
 	public function testPagarTransbordo(){
 		$this->tarjeta->recargar(20);
 		$this->medio->recargar(20);
