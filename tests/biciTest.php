@@ -38,4 +38,5 @@
 			$this->tarjeta->pagar($this->C,"2016/04/1 12:00");
 			$this->assertEquals($this->tarjeta->pagar($this->C,"2016/06/1 12:00"),0,"No deberia poder pagar");
 		}
+	}
 ?>
