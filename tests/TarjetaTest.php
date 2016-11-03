@@ -58,7 +58,7 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->tarjeta->pagar($this->A,"2016/04/1 12:00"),1,"Deberia poder pagar");
 		//NO TENGO MAS PLUS
 		$this->tarjeta->pagar($this->A,"2016/04/1 12:00");
-		$this->assertEquals($this->tarjeta->pagar(),0,"No deberia poder pagar");
+		$this->assertEquals($this->tarjeta->pagar($this->A,"2016/04/1 12:00"),0,"No deberia poder pagar");
 	}
 
 	public function testCargarPlus(){
