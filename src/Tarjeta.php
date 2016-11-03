@@ -56,7 +56,7 @@ class Tarjeta implements Int_Tarjeta{
 			$aux2 = strtotime($this->ultimabicipaga);
 			$costo = $transporte->getCosto();
 
-			if(($this->saldo && $this->plus>0) >= $costo+$this->valorPlus){
+			if(($this->saldo >= $costo+$this->valorPlus)&& $this->plus>0){
 				$this->saldo -= $this->valorPlus;
 				$this->plus = 0;
 				$this->valorPlus = 0;

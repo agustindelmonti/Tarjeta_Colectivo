@@ -54,7 +54,6 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 
 	public function testPagarPlus(){
 		$this->tarjeta->pagar($this->A,"2016/02/1 12:00");
-		$this->tarjeta->pagar($this->A,"2016/03/1 12:00");
 		$this->assertEquals($this->tarjeta->saldo(),0,"El saldo deberia ser $0");
 		$this->assertEquals($this->tarjeta->pagar($this->A,"2016/04/1 12:00"),1,"Deberia poder pagar");
 		//NO TENGO MAS PLUS
@@ -82,18 +81,6 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		$this->medio->pagar($this->A,"2016/02/1 12:00");
 		$this->medio->pagar($this->B,"2016/02/1 12:02");
 		$this->assertEquals($this->medio->saldo(),14.68, "El saldo de la tarjeta deberia ser de $14.68");
-	}
-
-	public function testPagarBici(){
-		$this->tarjeta->recargar(30);
-		//2 VIAJES DENTRO DE 24HS
-		$this->tarjeta->pagar($this->C,"2016/02/1 12:00");
-		$this->assertEquals($this->tarjeta->saldo(),18, "El saldo de la tarjeta deberia ser de $18");
-		$this->tarjeta->pagar($this->C,"2016/02/1 15:00");
-		$this->assertEquals($this->tarjeta->saldo(),18, "El saldo de la tarjeta deberia ser de $18");
-		//OTRO VIAJE
-		$this->tarjeta->pagar($this->C,"2016/02/3 12:00");
-		$this->assertEquals($this->tarjeta->saldo(),6, "El saldo de la tarjeta deberia ser de $6");
 	}
 }
 ?>
