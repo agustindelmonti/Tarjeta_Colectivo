@@ -54,15 +54,19 @@ class Tarjeta implements Int_Tarjeta{
 
 			$aux1 = strtotime($fecha_y_hora);
 			$aux2 = strtotime($this->ultimabicipaga);
-			$costo = $transporte->getCosto();
 
+			if($this->ultimabicipaga == 0 || ($aux1-$aux2>86400) || $this->plus<2){
+				$costo = $transporte->getCosto();
+			} else {
+				$costo = 0;
+			}
 			if(($this->saldo >= $costo+$this->valorPlus)&& $this->plus>0){
 				$this->saldo -= $this->valorPlus;
 				$this->plus = 0;
 				$this->valorPlus = 0;
 			}
-			if($this->ultimabicipaga == 0 || ($aux1-$aux2>86400) || $this->plus<2){
-				if($this->plus<2){
+			if($costo<=$this->saldo || $this->plus<2){
+				if($costo>$this->saldo && $this->plus<2){
 					$this->plus++;
 					$this->valorPlus += $costo;
 				}
@@ -70,11 +74,6 @@ class Tarjeta implements Int_Tarjeta{
 					$this->saldo -= $costo;
 					$this->ultimabicipaga = $fecha_y_hora;
 				}
-			} 
-			else {
-				$costo = 0;
-			}
-
 			$this->viajes[$fecha_y_hora] = new Viaje($fecha_y_hora,$transporte,$costo);
 			return 1;
 		}
