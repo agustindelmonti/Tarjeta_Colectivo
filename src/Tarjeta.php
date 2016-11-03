@@ -55,7 +55,7 @@ class Tarjeta implements Int_Tarjeta{
 			$aux1 = strtotime($fecha_y_hora);
 			$aux2 = strtotime($this->ultimabicipaga);
 
-			if($this->ultimabicipaga == 0 || ($aux1-$aux2<86400) || $this->plus<2){
+			if($this->ultimabicipaga == 0 || ($aux1-$aux2>86400)){
 				$costo = $transporte->getCosto();
 			} else {
 				$costo = 0;
