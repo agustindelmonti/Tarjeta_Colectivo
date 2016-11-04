@@ -45,7 +45,7 @@
 			$this->tarjeta->pagar($this->C,"2016/04/1 12:00"); //plus 2
 			$this->tarjeta->recargar(40); //Recargo de nuevo
 			$this->tarjeta->pagar($this->C,"2016/06/1 12:00");
-			$this->assertEquals($this->tarjeta->saldo(),6.63,"Saldo deberia ser $6.63")//Pago plus($24) y un boleto($12)
+			$this->assertEquals($this->tarjeta->saldo(),6.63,"Saldo deberia ser $6.63"); //Pago plus($24) y un boleto($12)
 		}
 	}
 ?>
