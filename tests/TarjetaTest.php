@@ -34,7 +34,7 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		//Pruebo todas las funciones de la case viajes
 		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getCosto(),$this->boleto_colectivo,"El valor del boleto de colectivo es $".$this->boleto_colectivo);
 		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getHorario(),"2016/02/1 12:00"," ");
-		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getTransporte()->getId(),"145"," ");
+		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getTransporte()->getNombreEmpresa(),"Rosario Bus"," ");
 		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getTipo(),"Viaje en Colectivo","Es un colectivo");
 	}
 

@@ -13,7 +13,7 @@ class Colectivo extends Transporte{
 	}
 
 	public function getNombreEmpresa(){
-		$this->empresa;
+		return $this->empresa;
 	}
 }
 
