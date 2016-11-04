@@ -5,7 +5,7 @@ namespace Poli\Tarjeta_Colectivo;
 class TarjetaTest extends \PHPUnit_Framework_TestCase {
 
 	//Cada vez que aumente el colectivo se cambia estos parametros para cambiar los tests
-	private $boleto_colectivo = 8 ,$boleto_trans_colectivo = 2.64; 
+	protected $boleto_colectivo = 8 ,$boleto_trans_colectivo = 2.64; 
 
 	protected $tarjeta,$A,$B;
 	public function setup(){
