@@ -4,6 +4,8 @@ namespace Poli\Tarjeta_Colectivo;
 
 class TarjetaTest extends \PHPUnit_Framework_TestCase {
 
+	//private int $boleto_colectivo = 8; //Cada vez que aumente el colectivo se cambia este parametro para cambiar los tests
+
 	protected $tarjeta,$A,$B;
 	public function setup(){
 		$this->tarjeta = new Tarjeta();
@@ -24,6 +26,15 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 	public function testTarjeta3(){
 		$this->tarjeta->recargar(250);
 		$this->assertEquals($this->tarjeta->saldo(), 250, "Cuando cargo 250 deberia tener finalmente 250");
+	}
+	public function testViaje(){
+		$this->tarjeta->recargar(20);
+		$this->tarjeta->pagar($this->A,"2016/02/1 12:00");
+		//Pruebo todas las funciones de la case viajes
+		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getCosto(),8,"El valor del boleto de colectivo es $8");
+		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getHorario(),"2016/02/1 12:00"," ");
+		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getTransporte()->getNombreEmpresa(),"SEMTUR"," ");
+		$this->assertEquals($this->tarjeta->viajesRealizados()["2016/02/1 12:00"]->getTipo(),"Viaje en colectivo","Es un colectivo");
 	}
 
 	public function testPagarColectivo1(){
@@ -82,5 +93,6 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		$this->medio->pagar($this->B,"2016/02/1 12:02");
 		$this->assertEquals($this->medio->saldo(),14.68, "El saldo de la tarjeta deberia ser de $14.68");
 	}
+
 }
 ?>
