@@ -12,7 +12,7 @@ class BoletoTest extends \PHPUnit_Framework_TestCase {
 	public function testNormal(){
 		$this->tarjeta->recargar(8);
 		$this->tarjeta->pagar($this->A,"2016/02/1 12:00");
-		$this->assertEquals($this->tarjeta->getboleto->getBoleto(),
+		$this->assertEquals($this->tarjeta->getBoleto->getBoleto(),
 			"ENTE DE LA MOVILIDAD DE ROSARIO SEMTUR\n2016/02/1 12:00 L:K\nNORMAL $8\nSaldo: $0"," ");
 	}
 
