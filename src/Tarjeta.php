@@ -106,12 +106,16 @@ class Tarjeta implements Int_Tarjeta{
 		$this->saldo+=$monto;
 	}
 
-	public function transbordo(){
+	public function getTipo(){
 		if($this->plus == 1) {return "PLUS";}
 		elseif($this->plus == 2) {return "ULT. PLUS";}
 		elseif($this->medio) {return "MEDIO";}
 		elseif($this->transbordo) {return "TRANSBORDO";}
 		else return "NORMAL";
+	}
+
+	public function getBoleto(){
+		return $this->boleto;
 	}
 
 	public function saldo(){
