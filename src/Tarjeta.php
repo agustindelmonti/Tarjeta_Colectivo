@@ -4,12 +4,13 @@ namespace Poli\Tarjeta_Colectivo;
 
 
 class Tarjeta implements Int_Tarjeta{
-	protected $saldo,$porcentaje,$plus=0,$valorPlus=0;
-	protected $viajes,$ultimafecha=0,$ultimabicipaga=0;
+	protected $saldo,$porcentaje,$plus=0,$valorPlus=0, $transbordo = False, $medio;
+	protected $viajes,$boleto,$ultimafecha=0,$ultimabicipaga=0;
 
 	public function __construct (){
 		$this->saldo = 0;
 		$this->porcentaje = 1;
+		$this->medio = False;
 	}
 
 	public function pagar(Transporte $transporte, $fecha_y_hora){
@@ -23,8 +24,10 @@ class Tarjeta implements Int_Tarjeta{
 			//Calculo costo boleto segun tiempo transcurrido (transbordo/normal)
 			if($this->ultimafecha == 0 || ($aux1-$aux2>3600) || $this->viajes[$this->ultimafecha]->getTransporte()->getId() == $transporte->getid()){ 
 				$costo = $transporte->getCosto()*$this->porcentaje;
+				$this->transbordo = False;
 			} else {
 				$costo = $transporte->getCostoTrans()*$this->porcentaje;
+				$this->transbordo = True;
 			}
 			//Puede pagar el boleto y los plus, se pagan los plus
 			if($costo+$this->valorPlus <= $this->saldo && $this->plus>0){
@@ -44,6 +47,7 @@ class Tarjeta implements Int_Tarjeta{
 				}
 				//Se crea el viaje, boleto y se puede viajar
 				$this->viajes[$fecha_y_hora] = new Viaje($fecha_y_hora,$transporte,$costo);
+				$this->boleto = new Boleto ($this,$this->viajes[$fecha_y_hora]);
 				$this->ultimafecha = $fecha_y_hora;
 				return 1;
 			} 
@@ -100,6 +104,14 @@ class Tarjeta implements Int_Tarjeta{
 			$monto+=48;
 		}
 		$this->saldo+=$monto;
+	}
+
+	public function transbordo(){
+		if($this->plus == 1) {return "PLUS";}
+		elseif($this->plus == 2) {return "ULT. PLUS";}
+		elseif($this->medio) {return "MEDIO";}
+		elseif($this->transbordo) {return "TRANSBORDO";}
+		else return "NORMAL";
 	}
 
 	public function saldo(){
