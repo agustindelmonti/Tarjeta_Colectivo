@@ -58,7 +58,7 @@ class Tarjeta implements Int_Tarjeta{
 		} 
 
 		//BICICLETA TIPO=2
-		if($transporte->getTipo()==2){ 
+		else{ 
 
 			$aux1 = strtotime($fecha_y_hora);
 			$aux2 = strtotime($this->ultimabicipaga);
@@ -107,10 +107,18 @@ class Tarjeta implements Int_Tarjeta{
 	}
 
 	public function getTipo(){
-		if($this->plus == 1) {return "PLUS";}
-		elseif($this->plus == 2) {return "ULT. PLUS";}
-		elseif($this->medio) {return "MEDIO";}
-		elseif($this->transbordo) {return "TRANSBORDO";}
+		if($this->plus == 1){
+			return "PLUS";
+		}
+		elseif($this->plus == 2){
+			return "ULT. PLUS";
+		}
+		elseif($this->transbordo){
+			return "TRANSBORDO";
+		}
+		elseif($this->medio){
+			return "MEDIO";
+		}
 		else return "NORMAL";
 	}
 
