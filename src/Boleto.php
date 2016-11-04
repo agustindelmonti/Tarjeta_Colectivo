@@ -5,7 +5,7 @@ namespace Poli\Tarjeta_Colectivo;
 	class Boleto {
 		protected $viaje,$trasbordo,$tarjeta;
 
-		public function __construct( Tarjeta $trajeta, Viaje $viaje){
+		public function __construct( Tarjeta $tarjeta, Viaje $viaje){
 			$this->viaje = $viaje;
 			$this->tarjeta = $tarjeta;
 		}
