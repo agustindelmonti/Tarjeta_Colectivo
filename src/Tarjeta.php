@@ -22,7 +22,7 @@ class Tarjeta implements Int_Tarjeta{
 			$aux2 = strtotime($this->ultimafecha);
 
 			//Calculo costo boleto segun tiempo transcurrido (transbordo/normal)
-			if($this->ultimafecha == 0 || ($aux1-$aux2>3600) || $this->viajes[$this->ultimafecha]->getTransporte()->getId() == $transporte->getid()){ 
+			if($this->ultimafecha == 0 || $this->isTransbordo($aux1,$aux2) || $this->viajes[$this->ultimafecha]->getTransporte()->getId() == $transporte->getid()){ 
 				$costo = $transporte->getCosto()*$this->porcentaje;
 				$this->transbordo = False;
 			} else {
@@ -104,6 +104,18 @@ class Tarjeta implements Int_Tarjeta{
 			$monto+=48;
 		}
 		$this->saldo+=$monto;
+	}
+
+	public function isTransbordo($a,$b){
+		//Lunes-Sabado(22hs a 6hs) ó Domingo [Tiempo Max.: 90min]
+		if( (strftime("%H",$a)>=22 && strftime("%H",$a)<=06) || (strftime("%a",$a)=='dom') ){
+			return $a-$b>5400;
+		}//Sabado(14hs a 22hs) [Tiempo Max.: 90min]
+		elseif ( strftime("%a",$a)=='sáb' && strftime("%H",$a)>=14 ){
+			return $a-$b>5400;
+		}
+		//Lunes-Viernes(6hs a 22hs) ó Sabados(6hs a 14hs) [Tiempo Max.: 60min]
+		else return $a-$b>3600;
 	}
 
 	public function getTipo(){

@@ -11,8 +11,10 @@ namespace Poli\Tarjeta_Colectivo;
 		}
 
 		public function getBoleto(){
-			return "ENTE DE LA MOVILIDAD DE ROSARIO ".$this->viaje->getTransporte()->getNombreEmpresa()."\n".
-			$this->viaje->getHorario()." L:".$this->viaje->getTransporte()->getId()."\n".$this->tarjeta->getTipo()." $".$this->viaje->getCosto()."\nSaldo: $".$this->tarjeta->saldo();
+			return "ENTE DE LA MOVILIDAD DE ROSARIO ".$this->viaje->getTransporte()->getNombreEmpresa().
+			"\n".$this->viaje->getHorario()." L:".$this->viaje->getTransporte()->getId().
+			"\n".$this->tarjeta->getTipo()." $".$this->viaje->getCosto().
+			"\nSaldo: $".$this->tarjeta->saldo();
 		}
 }
 
