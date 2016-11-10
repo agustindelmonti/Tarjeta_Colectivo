@@ -97,8 +97,8 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 	public function testTransbordoDom(){
 		$this->tarjeta->recargar(20);
 		//TRANSBORDO ENTRE A y B [Lunes-Sabado(22hs a 6hs) ó Domingo]
-		$this->tarjeta->pagar($this->A,"2016/02/1 23:00");
-		$this->tarjeta->pagar($this->B,"2016/02/2 4:20");
+		$this->tarjeta->pagar($this->A,"2016/11/13 23:00");
+		$this->tarjeta->pagar($this->B,"2016/11/14 3:20");
 		$this->assertEquals($this->tarjeta->saldo(),(20-2*$this->boleto_colectivo), "Saldo tarjeta deberia ser $".(20-2*$this->boleto_colectivo));
 	}
 
