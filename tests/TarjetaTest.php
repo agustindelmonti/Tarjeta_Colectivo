@@ -102,7 +102,7 @@ class TarjetaTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->tarjeta->saldo(),(20-$this->boleto_colectivo-$this->boleto_trans_colectivo), "Saldo tarjeta deberia ser $".(20-$this->boleto_colectivo-$this->boleto_trans_colectivo));
 	}
 
-	public function testTransbordoDom(){
+	public function testTransbordoSab(){
 		$this->tarjeta->recargar(20);
 		//TRANSBORDO ENTRE A y B [Sabado(14hs a 22hs)]
 		$this->tarjeta->pagar($this->A,"2016/11/12 15:00");
